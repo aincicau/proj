@@ -1,24 +1,24 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <ul>
-    <li v-for="person of persons" :key="person.firstName">
-      {{person.first}}
-    </li>
-  </ul>
+  <div>
+    <div v-for="person of persons" :key="person.firstName">
+      <Person :firstName="person.first" :lastName="person.last"/>
+    </div>
+  </div>
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-//import Person from './components/Person.vue'
+import Person from './components/Person.vue'
 
 
 
 export default {
   name: 'App',
   components: {
-    HelloWorld//,
-    //Person
+    HelloWorld,
+    Person
   },
   data(){
     return{

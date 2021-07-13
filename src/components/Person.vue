@@ -1,9 +1,6 @@
 <template>
-    <div v-if="firstName.indexOf('M') == 0" :id = "firstName">
-        1. {{name}}
-    </div>
-    <div v-else :id = "firstName">
-        2. {{name}}
+    <div :id = "firstName">
+        {{name}}
     </div>
 </template>
 
