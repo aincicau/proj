@@ -17,7 +17,7 @@ export default {
       persons: []
     }
   },
-  async mounted(){
+  async created(){
     const url = "https://randomuser.me/api/?results=5";
     try{
       const result = await fetch(url);
