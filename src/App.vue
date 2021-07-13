@@ -1,34 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
   <div>
-    <div v-for="person of persons" :key="person.firstName">
-      <Person :firstName="person.first" :lastName="person.last"/>
-    </div>
+    <Person v-for="person of persons" :key="person.first" :firstName="person.first" :lastName="person.last"/>
   </div>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Person from './components/Person.vue'
-
-
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     Person
   },
   data(){
     return{
-      persons: [{
-        first: "Maria",
-        last: "Pop"
-      },{
-        first: "Adrian",
-        last: "Mihalcea"
-      }]
+      persons: []
+    }
+  },
+  async mounted(){
+    const url = "https://randomuser.me/api/?results=5";
+    try{
+      const result = await fetch(url);
+      const json = await result.json();
+
+      for (const pers of json.results){
+        this.persons.push({
+          first: pers.name.first,
+          last: pers.name.last
+        });
+      }
+    }catch(e){
+      console.error("Error:", e);
     }
   }
 }
