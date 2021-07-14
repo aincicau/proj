@@ -17,7 +17,7 @@ export default {
         console.log('Person was created');
     },
     mounted(){
-        console.log('Person was mounted')
+        console.log('Person was mounted');
     }
 }
 </script>
